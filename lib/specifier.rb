@@ -9,19 +9,13 @@ require 'specifier/runner'
 require 'specifier/context'
 require 'specifier/example'
 require 'specifier/expectation'
-require 'specifier/memoizer'
 require 'specifier/matcher'
 require 'specifier/formatter'
 
 module Specifier
 
   def self.specify(scope, &block)
-    context = Context.new(scope, &block)
-    context.run
-  end
-
-  def self.config
-    @config ||= Config.new
+    Context.setup(scope, &block)
   end
 
   def self.logger

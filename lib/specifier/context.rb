@@ -4,6 +4,13 @@ module Specifier
   class Context
     attr_accessor :parent
 
+    def self.setup(scope, parent = nil, &block)
+      context = Context.new(scope, &block)
+      context.parent = parent
+      context.run
+      context
+    end
+
     def initialize(scope, &block)
       @_scope = scope
       @_block = block
@@ -11,13 +18,13 @@ module Specifier
     end
 
     def describe(scope, &block)
-      context = Context.new(scope, &block)
-      context.parent = self
-      context.run
+      self.class.setup(scope, &block)
     end
 
     def it(descriptor, &block)
-      @_examples << Example.new(descriptor, &block)
+      example = Example.new(descriptor, &block)
+      @_examples << example
+      example
     end
 
     def run

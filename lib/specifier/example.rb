@@ -7,12 +7,6 @@ module Specifier
       @_block = block
     end
 
-    # def let(name, &block)
-    #   define_method(name) do
-    #     @_memoizer.resolve(name, block)
-    #   end
-    # end
-
     def expect(value)
       Expectation.new(value)
     end

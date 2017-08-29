@@ -26,7 +26,7 @@ describe Specifier::CLI do
     it 'builds a launcher and executes run' do
       expect(Specifier::Runner).to receive(:new) { runner }
       expect(runner).to receive(:run)
-      cli.parse(%w[./specs])
+      cli.parse(%w[./sample])
     end
   end
 
