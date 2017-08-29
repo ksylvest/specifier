@@ -26,7 +26,7 @@ end
 bundle exec specifier ./specs
 ```
 
-[![Travis](https://img.shields.io/travis/ksylvest/specifier.svg)]()
-[![Gemnasium](https://img.shields.io/gemnasium/ksylvest/specifier.svg)]()
-[![Coveralls](https://img.shields.io/coveralls/ksylvest/specifier.svg)]()
-[![Codeclimate](https://img.shields.io/codeclimate/ksylvest/specifier.svg)]()
+[![Travis](https://img.shields.io/travis/ksylvest/specifier.svg)](https://travis-ci.org/ksylvest/specifier)
+[![Gemnasium](https://img.shields.io/gemnasium/ksylvest/specifier.svg)](https://gemnasium.com/ksylvest/specifier)
+[![Coveralls](https://img.shields.io/coveralls/ksylvest/specifier.svg)](https://coveralls.io/r/ksylvest/specifier)
+[![Codeclimate](https://img.shields.io/codeclimate/ksylvest/specifier.svg)](https://codeclimate.com/github/ksylvest/specifier)
