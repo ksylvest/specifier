@@ -25,3 +25,8 @@ end
 ```bash
 bundle exec specifier ./specs
 ```
+
+[![Travis](https://img.shields.io/travis/ksylvest/specifier.svg)]()
+[![Gemnasium](https://img.shields.io/gemnasium/ksylvest/specifier.svg)]()
+[![Coveralls](https://img.shields.io/coveralls/ksylvest/specifier.svg)]()
+[![Codeclimate](https://img.shields.io/codeclimate/ksylvest/specifier.svg)]()
