@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage = 'https://github.com/ksylvest/specifier'
   spec.license = 'MIT'
 
-  spec.files = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile']
+  spec.files = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile]
 
   spec.bindir = 'bin'
   spec.executables = ['specifier']
