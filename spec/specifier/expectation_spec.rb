@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Specifier::Expectation do
-  let(:descriptor) { 'a sample example' }
+  let(:description) { 'a sample example' }
   subject(:expectation) { Specifier::Expectation.new('today') }
 
   describe '#to' do

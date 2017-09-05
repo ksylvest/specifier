@@ -13,8 +13,10 @@ module Specifier
   class Example
     Result = Struct.new(:status, :message)
 
-    def initialize(descriptor, &block)
-      @descriptor = descriptor
+    attr_accessor :description
+
+    def initialize(description, &block)
+      @description = description
       @block = block
     end
 

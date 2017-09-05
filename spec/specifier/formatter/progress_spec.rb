@@ -8,12 +8,12 @@ describe Specifier::Formatter::Progress do
 
   describe '#record' do
     it 'sends a "+" to the logger for a pass' do
-      expect(logger).to receive(:<<).with('+')
+      expect(logger).to receive(:<<).with(Specifier::Colorizer.passed('+'))
       formatter.record(example, double(:result, status: :pass))
     end
 
     it 'sends a "-" to the logger for a fail' do
-      expect(logger).to receive(:<<).with('-')
+      expect(logger).to receive(:<<).with(Specifier::Colorizer.failed('-'))
       formatter.record(example, double(:result, status: :fail))
     end
   end

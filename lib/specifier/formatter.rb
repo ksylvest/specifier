@@ -7,6 +7,7 @@ module Specifier
 end
 
 require 'specifier/formatter/base'
+require 'specifier/formatter/documentation'
 require 'specifier/formatter/progress'
 
 module Specifier

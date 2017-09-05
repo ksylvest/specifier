@@ -27,10 +27,16 @@ module Specifier
       def initialize(logger)
         @logger = logger
         @recordings = []
+        @contexts = []
       end
 
       def record(example, result)
         @recordings << Recording.new(example, result)
+      end
+
+      def context(context)
+        @contexts << context
+        yield
       end
 
       def summarize
@@ -50,9 +56,9 @@ module Specifier
 
       def summary
         <<~SUMMARY
-          Total: #{@recordings.count}
-          Passed: #{passed.count}
-          Failed: #{failed.count}
+          Total: #{Colorizer.muted(@recordings.count)}
+          Passed: #{Colorizer.passed(passed.count)}
+          Failed: #{Colorizer.failed(failed.count)}
         SUMMARY
       end
     end

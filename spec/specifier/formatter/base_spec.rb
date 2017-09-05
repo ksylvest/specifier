@@ -11,9 +11,9 @@ describe Specifier::Formatter::Base do
       2.times { formatter.record(example, double(:result, status: :pass)) }
       3.times { formatter.record(example, double(:result, status: :fail)) }
       summary = <<~SUMMARY
-        Total: 5
-        Passed: 2
-        Failed: 3
+        Total: #{Specifier::Colorizer.muted(5)}
+        Passed: #{Specifier::Colorizer.passed(2)}
+        Failed: #{Specifier::Colorizer.failed(3)}
       SUMMARY
       allow(logger).to receive(:<<)
       expect(logger).to receive(:log)

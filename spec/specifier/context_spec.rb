@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Specifier::Context do
-  let(:descriptor) { 'a sample context' }
-  subject(:context) { Specifier::Context.new(descriptor, &proc {}) }
+  let(:description) { 'a sample context' }
+  subject(:context) { Specifier::Context.new(description, &proc {}) }
 
   describe '#describe' do
     it 'generates a new context' do

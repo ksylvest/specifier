@@ -16,6 +16,8 @@ module Specifier
       @paths.each do |path|
         load path
       end
+
+      Specifier.run
       Specifier.formatter.summarize
     end
   end

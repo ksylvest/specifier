@@ -1,32 +1,33 @@
 module Specifier
   module Formatter
-    PASS = '+'.freeze
-    FAIL = '-'.freeze
 
     # A custom defintion for formatting the specifier results.
     #
     # Usage:
     #
     #   formatter = Specifier::Formatter::Progress.new
-    #   formatter.record(example, result)
+    #   formatter.context(context) do
+    #     formatter.record(example, result)
+    #   end
     #   formatter.summarize
     #
     class Progress < Base
       NAME = 'progress'.freeze
+      PASS = '+'.freeze
+      FAIL = '-'.freeze
+
       Formatter.formatters[NAME] = self
 
       def record(example, result)
         super
-        @logger << symbol(result)
-      end
 
-    private
+        message =
+          case result.status
+          when :pass then Specifier::Colorizer.passed(PASS)
+          when :fail then Specifier::Colorizer.failed(FAIL)
+          end
 
-      def symbol(result)
-        case result.status
-        when :pass then PASS
-        when :fail then FAIL
-        end
+        @logger << message
       end
 
     end

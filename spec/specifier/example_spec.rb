@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Specifier::Example do
-  let(:descriptor) { 'a sample example' }
-  subject(:example) { Specifier::Example.new(descriptor, &proc {}) }
+  let(:description) { 'a sample example' }
+  subject(:example) { Specifier::Example.new(description, &proc {}) }
 
   describe '#expect' do
     it 'wraps a value in an expectation' do

@@ -19,23 +19,27 @@ module Specifier
   #
   class Context
     attr_accessor :parent
+    attr_accessor :children
+    attr_accessor :description
 
-    def self.setup(scope, parent = nil, &block)
-      context = Context.new(scope, &block)
+    def self.setup(description, parent = nil, &block)
+      context = Context.new(description, &block)
       context.parent = parent
-      context.run
+      parent.children << context if parent
+      context.instance_eval(&block)
       context
     end
 
-    def initialize(scope, &block)
-      @scope = scope
+    def initialize(description, &block)
+      @description = description
       @block = block
+      @children = []
       @examples = []
       @definitions = []
     end
 
-    def describe(scope, &block)
-      self.class.setup(scope, self, &block)
+    def describe(description, &block)
+      self.class.setup(description, self, &block)
     end
 
     def let(name, &block)
@@ -44,18 +48,20 @@ module Specifier
       definition
     end
 
-    def it(descriptor, &block)
-      example = Example.new(descriptor, &block)
+    def it(description, &block)
+      example = Example.new(description, &block)
       @examples << example
       example
     end
 
     def run
-      instance_eval(&@block)
-      @examples.each do |example|
-        setup(example)
-        result = example.run
-        Specifier.formatter.record(example, result)
+      Specifier.formatter.context(self) do
+        @examples.each do |example|
+          setup(example)
+          result = example.run
+          Specifier.formatter.record(example, result)
+        end
+        @children.each(&:run)
       end
     end
 

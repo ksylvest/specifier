@@ -3,6 +3,7 @@ require 'slop'
 
 require 'specifier/version'
 require 'specifier/cli'
+require 'specifier/colorizer'
 require 'specifier/config'
 require 'specifier/logger'
 require 'specifier/runner'
@@ -15,9 +16,16 @@ require 'specifier/memoizer'
 require 'specifier/formatter'
 
 module Specifier
+  def self.contexts
+    @contexts ||= []
+  end
 
   def self.specify(scope, &block)
-    Context.setup(scope, &block)
+    contexts << Context.setup(scope, &block)
+  end
+
+  def self.run
+    contexts.each(&:run)
   end
 
   def self.config
