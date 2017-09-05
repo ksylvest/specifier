@@ -9,12 +9,12 @@ describe Specifier::Formatter::Documentation do
 
   describe '#record' do
     it 'sends a "a sample example" to the logger for a pass' do
-      expect(logger).to receive(:log).with(Specifier::Colorizer.passed(example.description))
+      expect(logger).to receive(:log).with(Specifier::Colorizer.passed('[PASS] a sample example'))
       formatter.record(example, double(:result, status: :pass))
     end
 
     it 'sends a "a sample example" to the logger for a fail' do
-      expect(logger).to receive(:log).with(Specifier::Colorizer.failed(example.description))
+      expect(logger).to receive(:log).with(Specifier::Colorizer.failed('[FAIL] a sample example'))
       formatter.record(example, double(:result, status: :fail))
     end
   end
