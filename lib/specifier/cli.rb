@@ -1,4 +1,12 @@
 module Specifier
+
+  # Used when interacting with the suite from the command line interface (CLI).
+  #
+  # Usage:
+  #
+  #   cli = Specifier::CLI.new
+  #   cli.parse
+  #
   class CLI
     BANNER = 'usage: specifier [options] [./specs]'.freeze
 
@@ -13,6 +21,8 @@ module Specifier
         options.on '-v', '--version', 'version' do
           return version
         end
+
+        options.string '-f', '--formatter', 'formatter', default: Specifier::Formatter::DEFAULT
       end
 
       run(config)
@@ -29,6 +39,8 @@ module Specifier
     end
 
     def run(options)
+      Specifier.config.formatter = options[:formatter]
+
       paths = Set.new
       options.arguments.each do |argument|
         Find.find(argument) do |path|

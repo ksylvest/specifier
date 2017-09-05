@@ -12,6 +12,13 @@ RSpec.describe Specifier::Context do
     end
   end
 
+  describe '#let' do
+    it 'registers a defintion' do
+      definition = context.let(:sample) { 'sample' }
+      expect(definition).to be_kind_of(Specifier::Definition)
+    end
+  end
+
   describe '#it' do
     it 'registers an example' do
       example = context.it 'a sample example' do
@@ -27,6 +34,15 @@ RSpec.describe Specifier::Context do
       end
       expect(Specifier.formatter).to receive(:record)
       context.run
+    end
+  end
+
+  describe '#setup' do
+    it 'sets up an example with all the required defintions' do
+      definition = context.let(:sample) { 'sample' }
+      example = double(:example)
+      expect(definition).to receive(:define).with(example)
+      context.setup(example)
     end
   end
 

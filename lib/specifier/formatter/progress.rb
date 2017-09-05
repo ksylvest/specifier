@@ -1,6 +1,9 @@
 module Specifier
   module Formatter
     class Progress < Base
+      NAME = 'progress'.freeze
+      Formatter.formatters[NAME] = self
+
       def record(example, result)
         super
         @logger << symbol(result)

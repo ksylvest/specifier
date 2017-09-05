@@ -1,6 +1,22 @@
 require 'byebug'
 
 module Specifier
+
+  # Defines a context that can be deeply nested (evaluates from oldest to newest in ancestry).
+  #
+  # Usage:
+  #
+  #   let "..." do
+  #     # ...
+  #   end
+  #
+  #   it "..." do
+  #     # ...
+  #   end
+  #
+  #   describe "..." do
+  #   end
+  #
   class Context
     attr_accessor :parent
 
@@ -12,25 +28,41 @@ module Specifier
     end
 
     def initialize(scope, &block)
-      @_scope = scope
-      @_block = block
-      @_examples = Set.new
+      @scope = scope
+      @block = block
+      @examples = []
+      @definitions = []
     end
 
     def describe(scope, &block)
-      self.class.setup(scope, &block)
+      self.class.setup(scope, self, &block)
+    end
+
+    def let(name, &block)
+      definition = Definition.new(name, &block)
+      @definitions << definition
+      definition
     end
 
     def it(descriptor, &block)
       example = Example.new(descriptor, &block)
-      @_examples << example
+      @examples << example
       example
     end
 
     def run
-      instance_eval(&@_block)
-      @_examples.each do |example|
-        Specifier.formatter.record(example, example.run)
+      instance_eval(&@block)
+      @examples.each do |example|
+        setup(example)
+        result = example.run
+        Specifier.formatter.record(example, result)
+      end
+    end
+
+    def setup(example)
+      parent&.setup(example)
+      @definitions.each do |definition|
+        definition.define(example)
       end
     end
 

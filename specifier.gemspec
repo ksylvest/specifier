@@ -14,16 +14,14 @@ Gem::Specification.new do |spec|
   spec.homepage = 'https://github.com/ksylvest/specifier'
   spec.license = 'MIT'
 
-  spec.files = Dir.glob('{bin,lib}/**/*') + ['README.md', 'LICENSE' 'Gemfile']
+  spec.files = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile']
 
   spec.bindir = 'bin'
   spec.executables = ['specifier']
-  spec.require_paths = ['lib']
 
   spec.add_dependency 'slop'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'byebug'
-  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'simplecov'

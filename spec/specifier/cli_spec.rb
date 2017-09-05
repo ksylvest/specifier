@@ -16,8 +16,9 @@ describe Specifier::CLI do
       it "supports '#{option}'" do
         expect(Specifier.logger).to receive(:log).with <<~DEBUG
           usage: specifier [options] [./specs]
-              -h, --help     help
-              -v, --version  version
+              -h, --help       help
+              -v, --version    version
+              -f, --formatter  formatter
         DEBUG
         cli.parse([option])
       end

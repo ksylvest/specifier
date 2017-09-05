@@ -1,4 +1,12 @@
 module Specifier
+
+  # Handles load and execution of specs.
+  #
+  # Usage:
+  #
+  #   runner = Specifier::Runner.new(paths: "./spec")
+  #   runner.run
+  #
   class Runner
     def initialize(paths:)
       @paths = paths

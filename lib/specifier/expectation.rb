@@ -1,4 +1,12 @@
 module Specifier
+
+  # Configures an expectation (used for expect statements).
+  #
+  # Usage:
+  #
+  #   expectation = Specifier::Expectation.new("today")
+  #   expectation.to(matcher) # 'raises 'Miss'
+  #
   class Expectation
     class Miss < StandardError
       def initialize(message)
