@@ -55,18 +55,19 @@ module Specifier
     def run
       Specifier.formatter.context(self) do
         @examples.each do |example|
-          setup(example)
-          result = example.run
+          world = Specifier::World.new
+          setup(world)
+          result = example.run(world)
           Specifier.formatter.record(example, result)
         end
         @children.each(&:run)
       end
     end
 
-    def setup(example)
-      parent&.setup(example)
+    def setup(world)
+      parent&.setup(world)
       @definitions.each do |definition|
-        definition.define(example)
+        definition.define(world)
       end
     end
 

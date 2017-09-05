@@ -8,7 +8,8 @@ module Specifier
   #     expect(value).to equal(value)
   #   end
   #
-  #   example.run
+  #   world = Specifier::World.new
+  #   example.run(world)
   #
   class Example
     Result = Struct.new(:status, :message)
@@ -20,16 +21,8 @@ module Specifier
       @block = block
     end
 
-    def expect(value)
-      Expectation.new(value)
-    end
-
-    def equal(value)
-      Matcher::Equal.new(value)
-    end
-
-    def run
-      instance_eval(&@block)
+    def run(world)
+      world.instance_eval(&@block)
       return Result.new(:pass)
     rescue Specifier::Expectation::Miss => miss
       return Result.new(:fail, miss.message)
