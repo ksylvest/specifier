@@ -37,7 +37,7 @@ module Specifier
   end
 
   def self.formatter
-    @formatter ||= Formatter.formatters[config.formatter].new(logger)
+    @formatter ||= Formatter.formatters[config.formatter || Specifier::Formatter::DEFAULT].new(logger)
   end
 
 end

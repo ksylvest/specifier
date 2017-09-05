@@ -1,5 +1,3 @@
-require 'byebug'
-
 module Specifier
 
   # Defines a context that can be deeply nested (evaluates from oldest to newest in ancestry).
