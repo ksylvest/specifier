@@ -7,18 +7,6 @@ module Specifier
   #   Specifier.logger.log("...")
   #
   class Logger
-    module Color
-      BLACK  = 0
-      RED    = 1
-      GREEN  = 2
-      YELLOW = 3
-    end
-
-    module Formatting
-      DEFAULT = 0
-      BOLD    = 1
-      ITALIC  = 3
-    end
 
     def initialize(stream = STDOUT)
       @stream = stream

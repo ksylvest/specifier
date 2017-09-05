@@ -14,6 +14,8 @@ module Specifier
     class Documentation < Base
       INDENTATION = '  '.freeze
       NAME = 'documentation'.freeze
+      PASS = '[PASS]'.freeze
+      FAIL = '[FAIL]'.freeze
 
       Formatter.formatters[NAME] = self
 
@@ -27,8 +29,8 @@ module Specifier
 
         message =
           case result.status
-          when :pass then Colorizer.passed(indent(example.description))
-          when :fail then Colorizer.failed(indent(example.description))
+          when :pass then Colorizer.passed(indent("#{PASS} #{example.description}"))
+          when :fail then Colorizer.failed(indent("#{FAIL} #{example.description}"))
           end
 
         @logger.log(message)

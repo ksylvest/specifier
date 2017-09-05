@@ -21,7 +21,7 @@ module Specifier
     attr_accessor :description
 
     def self.setup(description, parent = nil, &block)
-      context = Context.new(description, &block)
+      context = new(description, &block)
       context.parent = parent
       parent.children << context if parent
       context.instance_eval(&block)
