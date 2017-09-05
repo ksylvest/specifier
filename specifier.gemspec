@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email = ['kevin@ksylvest.com']
 
   spec.summary = 'A testing framework written for fun.'
-  spec.description = 'Thi should probably never be used.'
+  spec.description = 'This should probably never be used.'
   spec.homepage = 'https://github.com/ksylvest/specifier'
   spec.license = 'MIT'
 

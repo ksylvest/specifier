@@ -24,8 +24,8 @@ module Specifier
     def run(world)
       world.instance_eval(&@block)
       return Result.new(:pass)
-    rescue Specifier::Expectation::Miss => miss
-      return Result.new(:fail, miss.message)
+    rescue => message
+      return Result.new(:fail, message)
     end
 
   end
