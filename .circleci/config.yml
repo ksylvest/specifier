@@ -48,5 +48,17 @@ jobs:
       # artifacts
       -
         type: artifacts-store
-        path: tmp/brakeman.html
-        destination: brakeman.html
+        path: tmp/rubocop.html
+        destination: rubocop.html
+
+      # codeclimate
+      -
+        type: cache-restore
+        key:
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
+      - ./cc-test-reporter upload-coverage
