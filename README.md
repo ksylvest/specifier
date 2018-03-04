@@ -38,8 +38,8 @@ bundle exec specifier ./specs
 
 [![CircleCI](https://circleci.com/gh/ksylvest/specifier.svg?style=svg)](https://circleci.com/gh/ksylvest/specifier)
 
-[![CodeClimate](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/maintainability)](https://codeclimate.com/github/ksylvest/specifier/maintainability)
-[![CodeClimate](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/test_coverage)](https://codeclimate.com/github/ksylvest/specifier/test_coverage)
+[![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/maintainability)](https://codeclimate.com/github/ksylvest/specifier/maintainability)
+[![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/test_coverage)](https://codeclimate.com/github/ksylvest/specifier/test_coverage)
 
 [![Gemnasium](https://gemnasium.com/badges/github.com/ksylvest/specifier.svg)](https://gemnasium.com/github.com/ksylvest/specifier)
 
