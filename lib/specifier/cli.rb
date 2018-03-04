@@ -14,15 +14,10 @@ module Specifier
       config = Slop.parse(items) do |options|
         options.banner = BANNER
 
-        options.on '-h', '--help', 'help' do
-          return help(options)
-        end
+        options.on('-h', '--help', 'help') { return help(options) }
+        options.on('-v', '--version', 'version') { return version }
 
-        options.on '-v', '--version', 'version' do
-          return version
-        end
-
-        options.string '-f', '--formatter', 'formatter', default: Specifier::Formatter::DEFAULT
+        options.string('-f', '--formatter', 'formatter', default: Specifier::Formatter::DEFAULT)
       end
 
       run(config)
