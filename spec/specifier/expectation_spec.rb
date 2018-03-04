@@ -8,7 +8,7 @@ RSpec.describe Specifier::Expectation do
     it 'raises an exception if the matcher fails' do
       expect {
         expectation.to(Specifier::Matcher::Equal.new('tomorrow'))
-      }.to raise_error
+      }.to raise_error(Specifier::Expectation::MatcherError, 'expected "today" got "tomorrow"')
     end
 
     it 'raises an exception if the matcher passes' do

@@ -1,5 +1,4 @@
 module Specifier
-
   # Configures an expectation (used for expect statements).
   #
   # Usage:
@@ -8,12 +7,15 @@ module Specifier
   #   expectation.to(matcher) # 'raises 'ToError'
   #
   class Expectation
+    class MatcherError < StandardError
+    end
+
     def initialize(value)
       @value = value
     end
 
     def to(matcher)
-      raise(matcher.message) unless matcher.match?(@value)
+      raise MatcherError, matcher.message unless matcher.match?(@value)
     end
   end
 end

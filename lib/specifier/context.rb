@@ -22,8 +22,10 @@ module Specifier
 
     def self.setup(description, parent = nil, &block)
       context = new(description, &block)
-      context.parent = parent
-      parent.children << context if parent
+      if parent
+        context.parent = parent
+        parent.children << context
+      end
       context.instance_eval(&block)
       context
     end
