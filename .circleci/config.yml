@@ -52,9 +52,6 @@ jobs:
         destination: rubocop.html
 
       # codeclimate
-      -
-        type: cache-restore
-        key:
       - run:
           name: Setup Code Climate test-reporter
           command: |
