@@ -14,11 +14,13 @@ jobs:
 
       # bundler
       -
+        name: "Cache Restore (Bundler)"
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
       -
         run: bundle check || bundle install
       -
+        name: "Cache Save (Bundler)"
         type: cache-save
         key: bundle-{{ checksum "Gemfile.lock" }}
         paths:
@@ -26,11 +28,13 @@ jobs:
 
       # rubocop
       -
+        name: "Rubocop"
         type: shell
         command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
 
       # rspec
       -
+        name: "RSpec"
         type: shell
         command: bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec/rspec.xml
 
@@ -52,10 +56,11 @@ jobs:
         destination: rubocop.html
 
       # codeclimate
-      - run:
-          name: Setup Code Climate test-reporter
+      -
+        run:
+          name: "Code Climate"
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
-      - ./cc-test-reporter upload-coverage
+            ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
+            ./cc-test-reporter upload-coverage
