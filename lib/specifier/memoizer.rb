@@ -17,6 +17,7 @@ module Specifier
 
     def evaluate
       return @result if defined?(@result)
+
       @result = @block.call
     end
 
