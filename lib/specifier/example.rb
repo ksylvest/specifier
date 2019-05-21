@@ -24,8 +24,8 @@ module Specifier
     def run(world)
       world.instance_eval(&@block)
       Result.new(:pass)
-    rescue StandardError => message
-      Result.new(:fail, message)
+    rescue StandardError => e
+      Result.new(:fail, e)
     end
 
   end
