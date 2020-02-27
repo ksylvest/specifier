@@ -44,4 +44,4 @@ bundle exec specifier ./specs
 
 ## Copyright
 
-Copyright (c) 2016 - 2018 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
+Copyright (c) 2016 - 2020 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
