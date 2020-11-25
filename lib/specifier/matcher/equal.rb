@@ -2,6 +2,7 @@ module Specifier
   module Matcher
     class Equal < Base
       def initialize(value)
+        super()
         @value = value
       end
 
