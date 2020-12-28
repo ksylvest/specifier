@@ -55,7 +55,8 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bundler
@@ -68,4 +69,4 @@ DEPENDENCIES
   specifier!
 
 BUNDLED WITH
-   2.1.4
+   2.2.3
