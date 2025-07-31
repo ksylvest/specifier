@@ -1,5 +1,10 @@
 # Specifier
 
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ksylvest/specifier/blob/main/LICENSE)
+[![RubyGems](https://img.shields.io/gem/v/specifier)](https://rubygems.org/gems/specifier)
+[![GitHub](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/ksylvest/specifier)
+[![CircleCI](https://img.shields.io/circleci/build/github/ksylvest/specifier)](https://circleci.com/gh/ksylvest/specifier)
+
 ## Installation
 
 ```bash
@@ -34,14 +39,6 @@ end
 bundle exec specifier ./specs
 ```
 
-## Status
-
-[![CircleCI](https://circleci.com/gh/ksylvest/specifier.svg?style=svg)](https://circleci.com/gh/ksylvest/specifier)
-[![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/maintainability)](https://codeclimate.com/github/ksylvest/specifier/maintainability)
-[![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/test_coverage)](https://codeclimate.com/github/ksylvest/specifier/test_coverage)
-
-
-
 ## Copyright
 
-Copyright (c) 2016 - 2020 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
+Copyright (c) 2016 - 2025 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
