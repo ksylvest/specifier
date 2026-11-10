@@ -1,13 +1,30 @@
-require 'spec_helper'
+require "spec_helper"
+require "tempfile"
 
 describe Specifier::Runner do
-  let(:path) { './spec/example_spec.rb' }
-  subject(:runner) { Specifier::Runner.new(paths: [path]) }
-  describe '#run' do
-    it 'calls load on each path then summarizes' do
-      expect(runner).to receive(:load).with(path)
-      expect(Specifier.formatter).to receive(:summarize)
+  subject(:runner) { described_class.new(paths: [file.path]) }
+
+  let(:file) do
+    Tempfile.new(%w[example _spec.rb]).tap do |file|
+      file.write('Specifier.logger.log("loaded")')
+      file.flush
+    end
+  end
+
+  after { file.close! }
+
+  describe "#run" do
+    it "loads each path" do
+      allow(Specifier.logger).to receive(:log)
       runner.run
+      expect(Specifier.logger).to have_received(:log).with("loaded")
+    end
+
+    it "summarizes" do
+      allow(Specifier.logger).to receive(:log)
+      allow(Specifier.formatter).to receive(:summarize)
+      runner.run
+      expect(Specifier.formatter).to have_received(:summarize)
     end
   end
 end

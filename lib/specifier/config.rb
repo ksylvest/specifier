@@ -1,5 +1,4 @@
 module Specifier
-
   # Configuration options used internally such as the formatter. Can be accessed via the global.
   #
   # Usage:
@@ -7,7 +6,8 @@ module Specifier
   #   Specifier.config
   #
   class Config
+    # @!attribute [rw] formatter
+    #   @return [String, nil]
     attr_accessor :formatter
   end
-
 end

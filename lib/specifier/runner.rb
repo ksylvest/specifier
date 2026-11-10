@@ -1,5 +1,4 @@
 module Specifier
-
   # Handles load and execution of specs.
   #
   # Usage:
@@ -8,10 +7,12 @@ module Specifier
   #   runner.run
   #
   class Runner
+    # @param paths [Enumerable<String>]
     def initialize(paths:)
       @paths = paths
     end
 
+    # @return [void]
     def run
       @paths.each do |path|
         load path

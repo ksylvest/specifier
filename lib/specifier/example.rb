@@ -14,19 +14,25 @@ module Specifier
   class Example
     Result = Struct.new(:status, :message)
 
+    # @!attribute [rw] description
+    #   @return [String]
     attr_accessor :description
 
+    # @param description [String]
+    # @param block [Proc]
     def initialize(description, &block)
       @description = description
       @block = block
     end
 
+    # @param world [Specifier::World]
+    #
+    # @return [Specifier::Example::Result]
     def run(world)
       world.instance_eval(&@block)
       Result.new(:pass)
     rescue StandardError => e
       Result.new(:fail, e)
     end
-
   end
 end

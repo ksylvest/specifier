@@ -1,9 +1,9 @@
-AllCops:
-  TargetRubyVersion: 2.5
-  Exclude:
-    - Gemfile
-    - Gemfile.lock
-    - vendor/**/*
+inherit_gem:
+  rubocop-basic: rubocop.yml
+
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
@@ -38,5 +38,5 @@ Style/BlockDelimiters:
 Metrics/BlockLength:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120

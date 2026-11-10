@@ -5,21 +5,21 @@ class Echo
 end
 
 Specifier.specify Echo do
-  describe '#say' do
+  describe "#say" do
     it 'says "Hello" if you say "Hello"' do
-      expect(Echo.new.say('Hello')).to equal('Hello')
+      expect(Echo.new.say("Hello")).to equal("Hello")
     end
 
     it 'says "Goodbye" if you say "Goodbye"' do
-      expect(Echo.new.say('Goodbye')).to equal('Goodbye')
+      expect(Echo.new.say("Goodbye")).to equal("Goodbye")
     end
 
     it 'says "Hello" if you say "Goodbye"' do
-      expect(Echo.new.say('Hello')).to equal('Goodbye')
+      expect(Echo.new.say("Hello")).to equal("Goodbye")
     end
 
-    it 'fails graceful for syntax errors' do
-      echo.greet('Sample')
+    it "fails graceful for syntax errors" do
+      expect(echo.greet("Sample")).to equal("Sample")
     end
   end
 end

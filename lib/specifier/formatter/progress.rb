@@ -1,6 +1,5 @@
 module Specifier
   module Formatter
-
     # A custom defintion for formatting the specifier results.
     #
     # Usage:
@@ -12,12 +11,14 @@ module Specifier
     #   formatter.summarize
     #
     class Progress < Base
-      NAME = 'progress'.freeze
-      PASS = '+'.freeze
-      FAIL = '-'.freeze
+      NAME = "progress".freeze
+      PASS = "+".freeze
+      FAIL = "-".freeze
 
-      Formatter.formatters[NAME] = self
-
+      # @param example [Specifier::Example]
+      # @param result [Specifier::Example::Result]
+      #
+      # @return [void]
       def record(example, result)
         super
 
@@ -29,8 +30,6 @@ module Specifier
 
         @logger << message
       end
-
     end
-
   end
 end
