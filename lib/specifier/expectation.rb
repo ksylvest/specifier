@@ -10,10 +10,14 @@ module Specifier
     class MatcherError < StandardError
     end
 
+    # @param value [Object]
     def initialize(value)
       @value = value
     end
 
+    # @param matcher [Specifier::Matcher::Base]
+    #
+    # @return [void]
     def to(matcher)
       raise MatcherError, matcher.message unless matcher.match?(@value)
     end

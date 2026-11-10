@@ -1,20 +1,20 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Specifier::Formatter::Progress do
-  subject(:formatter) { Specifier::Formatter::Progress.new(logger) }
-  let(:logger) { double(:logger) }
-  let(:example) { double(:example) }
-  let(:message) { 'an unknown error occurred' }
+  subject(:formatter) { described_class.new(logger) }
 
-  describe '#record' do
+  let(:logger) { instance_spy(Specifier::Logger) }
+  let(:example) { instance_double(Specifier::Example) }
+
+  describe "#record" do
     it 'sends a "+" to the logger for a pass' do
-      expect(logger).to receive(:<<).with(Specifier::Colorizer.passed('+'))
-      formatter.record(example, double(:result, status: :pass))
+      formatter.record(example, Specifier::Example::Result.new(:pass))
+      expect(logger).to have_received(:<<).with(Specifier::Colorizer.passed("+"))
     end
 
     it 'sends a "-" to the logger for a fail' do
-      expect(logger).to receive(:<<).with(Specifier::Colorizer.failed('-'))
-      formatter.record(example, double(:result, status: :fail))
+      formatter.record(example, Specifier::Example::Result.new(:fail))
+      expect(logger).to have_received(:<<).with(Specifier::Colorizer.failed("-"))
     end
   end
 end

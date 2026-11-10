@@ -1,6 +1,5 @@
 module Specifier
   module Formatter
-
     # A custom defintion for formatting the specifier results.
     #
     # Usage:
@@ -12,18 +11,21 @@ module Specifier
     #   formatter.summarize
     #
     class Documentation < Base
-      INDENTATION = '  '.freeze
-      NAME = 'documentation'.freeze
-      PASS = '[PASS]'.freeze
-      FAIL = '[FAIL]'.freeze
+      INDENTATION = "  ".freeze
+      NAME = "documentation".freeze
+      PASS = "[PASS]".freeze
+      FAIL = "[FAIL]".freeze
 
-      Formatter.formatters[NAME] = self
-
+      # @param logger [Specifier::Logger]
       def initialize(logger)
         super
         @indentation = 0
       end
 
+      # @param example [Specifier::Example]
+      # @param result [Specifier::Example::Result]
+      #
+      # @return [void]
       def record(example, result)
         super
 
@@ -36,6 +38,9 @@ module Specifier
         @logger.log(message)
       end
 
+      # @param context [Specifier::Context]
+      #
+      # @return [void]
       def context(context)
         @logger.log(indent(context.description))
 
@@ -46,11 +51,12 @@ module Specifier
 
     private
 
+      # @param message [String]
+      #
+      # @return [String]
       def indent(message)
-        INDENTATION * @indentation + String(message)
+        (INDENTATION * @indentation) + String(message)
       end
-
     end
-
   end
 end

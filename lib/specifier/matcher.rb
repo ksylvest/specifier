@@ -1,2 +1,4 @@
-require 'specifier/matcher/base'
-require 'specifier/matcher/equal'
+module Specifier
+  module Matcher
+  end
+end

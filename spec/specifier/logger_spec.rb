@@ -1,20 +1,21 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Specifier::Logger do
-  subject(:logger) { Specifier::Logger.new(stream) }
-  let(:stream) { double(:stream) }
+  subject(:logger) { described_class.new(stream) }
 
-  describe '#log' do
-    it 'proxies to stream' do
-      expect(stream).to receive(:puts).with('Hello!')
-      logger.log('Hello!')
+  let(:stream) { instance_spy(IO) }
+
+  describe "#log" do
+    it "proxies to stream" do
+      logger.log("Hello!")
+      expect(stream).to have_received(:puts).with("Hello!")
     end
   end
 
-  describe '#<<' do
-    it 'proxies to stream' do
-      expect(stream).to receive(:<<).with('Hello!')
-      logger << 'Hello!'
+  describe "#<<" do
+    it "proxies to stream" do
+      logger << "Hello!"
+      expect(stream).to have_received(:<<).with("Hello!")
     end
   end
 
